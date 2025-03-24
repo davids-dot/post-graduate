@@ -8,10 +8,10 @@ FEED_EXPORTERS = {
 }
 
 # MySQL 配置
-MYSQL_HOST = 'localhost'
-MYSQL_DATABASE = 'graduate_info'
+MYSQL_HOST = 'elasticsearch.cloud.com'
+MYSQL_DATABASE = 'love_chat'
 MYSQL_USER = 'root'
-MYSQL_PASSWORD = 'your_password'
+MYSQL_PASSWORD = '12345678zyc'
 MYSQL_PORT = 3306
 
 # 爬虫设置
@@ -19,6 +19,6 @@ ROBOTSTXT_OBEY = False
 DOWNLOAD_DELAY = 2
 COOKIES_ENABLED = True
 
-# ITEM_PIPELINES = {
-#    'graduate_info.pipelines.GraduateInfoPipeline': 300,
-# }
+ITEM_PIPELINES = {
+   'graduate_info.pipelines.school_pipeline.SchoolPipeline': 300,
+}

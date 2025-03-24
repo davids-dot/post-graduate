@@ -4,14 +4,21 @@ CREATE DATABASE IF NOT EXISTS graduate_info CHARACTER SET utf8mb4 COLLATE utf8mb
 USE graduate_info;
 
 -- 创建学校信息表
-CREATE TABLE IF NOT EXISTS schools (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL COMMENT '学校名称',
-    code VARCHAR(20) NOT NULL COMMENT '学校代码',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    UNIQUE KEY uk_code (code)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='学校信息表';
+CREATE TABLE `school` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `school_name` varchar(100) NOT NULL COMMENT '学校名称',
+  `logo_url` varchar(255) NOT NULL COMMENT '学校logo地址',
+  `tag` varchar(100) DEFAULT NULL COMMENT '学校标签，如"双一流"建设高校',
+  `self_evaluation` tinyint(1) DEFAULT '0' COMMENT '是否自划线院校',
+  `notice` varchar(255) NOT NULL COMMENT '网报公告链接',
+  `enrollment_guide` varchar(255) NOT NULL COMMENT '招生简章链接',
+  `online_consult_url` varchar(255) NOT NULL COMMENT '在线咨询链接',
+  `adjustment_method` varchar(255) NOT NULL COMMENT '调剂办法链接',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uni_name` (`school_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COMMENT='学校信息表';
 
 -- 创建专业信息表
 CREATE TABLE IF NOT EXISTS majors (
