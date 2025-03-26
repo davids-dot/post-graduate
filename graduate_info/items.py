@@ -1,6 +1,6 @@
 import scrapy
 
-class ShcoolItem(scrapy.Item):
+class SchoolItem(scrapy.Item):
     school_name = scrapy.Field()  # 学校名称
     logo_url = scrapy.Field()     # logo_url
     tag = scrapy.Field()          # 学校标签

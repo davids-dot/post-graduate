@@ -1,5 +1,7 @@
 import mysql.connector
 from graduate_info import settings
+from graduate_info import  items
+
 
 class SchoolPipeline:
     def __init__(self):
@@ -13,6 +15,9 @@ class SchoolPipeline:
         self.cursor = self.conn.cursor()
 
     def process_item(self, item, spider):
+        if not isinstance(item, items.SchoolItem):  # 如果不是 SchoolItem，直接返回
+            return item
+
         sql = """
         INSERT IGNORE INTO school (
             school_name, logo_url, tag, self_evaluation, 

@@ -21,16 +21,20 @@ CREATE TABLE `school` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COMMENT='学校信息表';
 
 -- 创建专业信息表
-CREATE TABLE IF NOT EXISTS majors (
+CREATE TABLE IF NOT EXISTS enrollment_plan (
     id INT AUTO_INCREMENT PRIMARY KEY,
     school_id INT NOT NULL COMMENT '学校ID',
+    school_name VARCHAR(100) NOT NULL COMMENT '学校名称',
     name VARCHAR(100) NOT NULL COMMENT '专业名称',
     code VARCHAR(20) NOT NULL COMMENT '专业代码',
+    total_quota INT  NOT NULL COMMENT '总招生人数',
+    full_time_quota INT  COMMENT '全日制招生人数',
+    part_time_quota INT  COMMENT '非全日制招生人数',
+    year INT  COMMENT '年份',
     department VARCHAR(100) COMMENT '所属院系',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (school_id) REFERENCES schools(id),
-    UNIQUE KEY uk_school_code (school_id, code)
+    UNIQUE KEY uk_year_school_code_major_code (school_id, code)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='专业信息表';
 
 -- 创建分数线表

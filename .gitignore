@@ -38,6 +38,7 @@ ENV/
 logs/
 
 # Local development settings
+.env
 .env.local
 
 *.jsonl
